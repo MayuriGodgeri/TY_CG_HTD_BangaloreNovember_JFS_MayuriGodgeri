@@ -1,0 +1,16 @@
+package staticAndNonststic;
+
+public class FirstGen 
+{
+ void call()
+ {
+	 System.out.println("you can call");
+	 
+ }
+ 
+ void msg()
+ {
+	 System.out.println("you can msg");
+	 
+ }
+}
