@@ -1,0 +1,7 @@
+package com.capgemini.phoneapplication.dao;
+
+public interface Operations {
+ public boolean addContacts();
+ public boolean deleteContacts();
+ public boolean editContacts();
+}

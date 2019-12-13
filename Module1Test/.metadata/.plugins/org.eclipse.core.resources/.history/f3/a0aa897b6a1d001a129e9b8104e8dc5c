@@ -1,0 +1,7 @@
+package com.capgemini.phoneapplication.dao;
+
+public interface PhoneAppDAO {
+	public boolean getAllContacts();
+	public boolean searchContacts();
+	public boolean operations();
+}

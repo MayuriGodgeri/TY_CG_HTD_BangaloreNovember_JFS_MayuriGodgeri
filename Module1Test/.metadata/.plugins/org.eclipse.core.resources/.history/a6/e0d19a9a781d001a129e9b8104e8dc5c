@@ -1,0 +1,44 @@
+package com.capgemini.phoneapplication.controler;
+
+import java.util.Scanner;
+
+import com.capgemini.phoneapplication.bean.Contacts;
+import com.capgemini.phoneapplication.contactfactory.ContactFactory;
+import com.capgemini.phoneapplication.dao.OperationDAO;
+import com.capgemini.phoneapplication.dao.PhoneAppDAO;
+
+public class Operate {
+	public static void main(String[] args) {
+		//CustomerServices services=CustomerFactory.instanceOfCustomerServices();
+		Scanner sc=new Scanner(System.in);
+		Contacts bean=new Contacts();
+		PhoneAppDAO dao= ContactFactory.instanceOfPhoneAppDAOImpl();
+        OperationDAO dao1=ContactFactory.instanceOperationDAOImpl();
+		while(true){
+			System.out.println("Press 1 to delete");
+			System.out.println("Press 2 to insert");
+			System.out.println("Press 3 to edit");
+
+			int choice=sc.nextInt();
+			switch(choice) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				System.out.println("enter the contact number");
+				int number=sc.nextInt();
+	           boolean check1=dao1.editContacts(number);
+
+				if(check1) {
+					System.out.println("contact deleted successfully");
+				}
+				else {
+					System.err.println("contact not found");
+				}
+				break;
+			}
+		}
+	}
+}
+

@@ -1,0 +1,11 @@
+driverClass=com.mysql.jdbc.Driver
+dbUrl=jdbc:mysql://localHost:3306/ty_cg_nov6
+dbUser=root
+dbPassword=root
+
+query1=select*from contact
+querySearch=select * from contact where name=? 
+insertQuery1=insert into Contact values(?,?,?)
+editQuery1=update Contact set number=? 
+deleteQuery1=delete from Contact where name=? 
+

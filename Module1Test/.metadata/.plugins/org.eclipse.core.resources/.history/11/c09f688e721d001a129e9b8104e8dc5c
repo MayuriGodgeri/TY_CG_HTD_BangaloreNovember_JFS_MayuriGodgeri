@@ -1,0 +1,80 @@
+package com.capgemini.phoneapplication.dao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Properties;
+
+import com.capgemini.phoneapplication.bean.Contacts;
+
+public class OperationDAOImpl implements OperationDAO {
+	FileReader reader;
+	Properties prop;
+	Contacts user;
+
+	public OperationDAOImpl() 
+	{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			reader=new FileReader("db.property");
+			prop=new Properties();
+			prop.load(reader);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public boolean addContacts(Contacts bean) {
+		try( Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("insertQuery1"));){
+			pstmt.setString(1,bean.getName());
+			pstmt.setInt(2,bean.getNumber());
+			pstmt.setString(3,bean.getGroup());
+			int count=pstmt.executeUpdate();
+			if(count>0) {
+				return true;
+
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean deleteContacts(String name) {
+		try( Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("deleteQuery1"))){
+			int count=pstmt.executeUpdate();
+			if(count>0) {
+				return true;
+			}}
+		catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean editContacts(int number) {
+		try( Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("editQuery1"))){
+			int count=pstmt.executeUpdate();
+			if(count>0) {
+				return true;
+			}
+			
+		}catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return false;
+
+	}
+}

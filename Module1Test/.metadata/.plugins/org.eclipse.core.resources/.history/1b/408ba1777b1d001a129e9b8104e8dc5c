@@ -1,0 +1,68 @@
+package com.capgemini.phoneapplication.controler;
+
+import java.util.Scanner;
+
+import com.capgemini.phoneapplication.bean.Contacts;
+import com.capgemini.phoneapplication.contactfactory.ContactFactory;
+import com.capgemini.phoneapplication.dao.OperationDAO;
+import com.capgemini.phoneapplication.dao.PhoneAppDAO;
+
+public class Operate {
+	public static void main(String[] args) {
+		//CustomerServices services=CustomerFactory.instanceOfCustomerServices();
+		Scanner sc=new Scanner(System.in);
+		Contacts bean=new Contacts();
+		PhoneAppDAO dao= ContactFactory.instanceOfPhoneAppDAOImpl();
+        OperationDAO dao1=ContactFactory.instanceOperationDAOImpl();
+		while(true){
+			System.out.println("Press 1 to delete");
+			System.out.println("Press 2 to insert");
+			System.out.println("Press 3 to edit");
+
+			int choice=sc.nextInt();
+			switch(choice) {
+			case 1:
+				System.out.println("enter the contact name");
+				String name=sc.next();
+	           boolean check1=dao1.deleteContacts(name);
+
+				if(check1) {
+					System.out.println("contact deleted successfully");
+				}
+				else {
+					System.err.println("contact not found");
+				}
+				break;
+			case 2:
+				System.out.println("enter the contact name");
+				String name1=sc.next();
+				System.out.println("enter the contact number");
+				int num=sc.nextInt();
+				System.out.println("enter the contact group");
+				String grp=sc.next();
+	           boolean check2=dao1.addContacts(bean);
+
+				if(check2) {
+					System.out.println("contact added successfully");
+				}
+				else {
+					System.err.println("contact not added");
+				}
+				break;
+			case 3:
+				System.out.println("enter the contact number");
+				int numb=sc.nextInt();
+	           boolean check3=dao1.editContacts(numb);
+
+				if(check3) {
+					System.out.println("contact edited successfully");
+				}
+				else {
+					System.err.println("contact not found");
+				}
+				break;
+			}
+		}
+	}
+}
+

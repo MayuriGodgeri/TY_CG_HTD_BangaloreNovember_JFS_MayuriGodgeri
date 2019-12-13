@@ -1,0 +1,67 @@
+package com.capgemini.phoneapplication.dao;
+
+import com.capgemini.phoneapplication.bean.Contacts;
+
+public interface OperationDAO {
+	public boolean addContacts(Contacts bean);
+	public boolean editContacts(int number);
+	boolean deleteContacts(String name);
+
+
+	/*@Override
+	public boolean addContractor(ContractorBean bean) {
+		try( Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("insertQuery2"));){
+				pstmt.setInt(1,user.getContractNo());
+				pstmt.setInt(2,user.getCustomerId());
+				pstmt.setInt(3,user.getProductId());
+				pstmt.setInt(4,user.getHaulierId());
+				pstmt.setString(5,user.getDeliveryDate());
+				pstmt.setString(6,user.getDeliveryDay());
+				pstmt.setInt(7,user.getQuantity());
+				int count=pstmt.executeUpdate();
+				if(count>0) {
+					return true;
+
+				}
+		}
+		 catch (Exception e) {
+
+				e.printStackTrace();
+			}
+
+		return false;
+	}
+
+
+
+	@Override
+	public boolean deleteContractor(int contrId) {
+		try( Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("deleteQuery2"))){
+				pstmt.setInt(1,user.getCustomerId());
+				int count=pstmt.executeUpdate();
+				if(count>0) {
+					return true;
+				}}
+		 catch (Exception e) {
+
+				e.printStackTrace();
+			}
+		return false;
+	}
+
+}
+
+public class ContractorFactory {
+	public static ContractorDAO instanceOfContractorDAOImpl() {
+		ContractorDAO dao =new ContractorDAOImpl();
+		return dao;
+	}
+
+	public static ContractorServices instanceOfContractorServices() {
+		ContractorServices services=new ContractorServiceImpl();
+		return services;
+	}
+}*/
+}

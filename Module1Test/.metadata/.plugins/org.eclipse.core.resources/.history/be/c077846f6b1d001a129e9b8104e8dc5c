@@ -1,0 +1,11 @@
+package com.capgemini.phoneapplication.dao;
+
+import java.util.List;
+
+import com.capgemini.phoneapplication.bean.Contacts;
+
+public interface PhoneAppDAO {
+	public List<Contacts> getAllContract(Contacts bean);
+	public boolean searchContacts();
+	public boolean operations();
+}
